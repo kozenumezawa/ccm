@@ -45,11 +45,18 @@ TIMESTEP <- 100
 
 t <- 1:TIMESTEP
 # show  inputdata
-plot(t, ratio, type = "l",xlim=c(0, TIMESTEP), ylim=c(0,2), xlab = "t", ylab = "X(t)", col = "red")
-lines(t, round, type = "l", xlab = "t", ylab = "Y(t)", col = "blue")
+plot(t, ratio, type = "l",xlim=c(0, TIMESTEP), ylim=c(0,2), xlab = "t", ylab = "X(t)", col = "black")
+lines(t, round, type = "l", xlab = "t", ylab = "Y(t)", col = "red")
+legend("topleft", c("ratio", "round"), lty=c(1,2), col=c(1,2), lwd=2, bty="n", cex=1.2)
 
 Accm <- as.numeric(ratio)
 Bccm <- as.numeric(round)
+
+# create ARmodel
+# ratio_normalized <- Accm - 1
+# plot(t, ratio_normalized, type = "l",xlim=c(0, TIMESTEP), ylim=c(-1,1), xlab = "t", ylab = "X(t)", col = "red")
+# ratio <- ar(ratio_normalized, aic=TRUE)
+# ratio$ar
 
 # determine Embedding Dimension
 determineEmbeddingDimension(Accm)
